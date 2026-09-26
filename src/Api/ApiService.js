@@ -28,5 +28,17 @@ export const PostVisitors=async(data)=>{
 
 //Get Visitor Data
 export const VisitorsList=async()=>{
-    return axiosService("GET",'/visitors',{})
+    return await axiosService("GET",'/visitors',{})
+}
+
+//Delete visitor from Data Base
+export const DltVisitor=async(id)=>{
+return await axiosService("DELETE",`/visitors/${id}`,{})
+}
+
+//Store Accessed Visitores store security field
+export const AccessedVisitors=async(id,data)=>{
+const response=await axiosService("GET",`/security/${id}`,{})
+const updated=[...(response.data.accessed || []),...data]
+return await axiosService("PATCH",`/security/${id}`,{accessed:updated})
 }

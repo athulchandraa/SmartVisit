@@ -1,10 +1,22 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import AdminSideBar from '../Pages/AdminSideBar'
 import { useParams } from 'react-router-dom'
+import { GetSecurity } from '../Api/ApiService'
 
 
 function SecurityVisitLog() {
   const {id}=useParams()
+  const[SecurityHistory,setSecurityHistory]=useState(null)
+  console.log(SecurityHistory);
+  
+
+  const thisSecurityHistory=async()=>{
+    const response=await GetSecurity()
+    setSecurityHistory(response.data.filter(item=>item.id==id)[0].accessed);
+  }
+  useEffect(()=>{
+    thisSecurityHistory()
+  },[])
   return (
      <div className='flex'>
       <AdminSideBar sidebar id={id}/>
@@ -19,7 +31,9 @@ function SecurityVisitLog() {
             <input className='border py-1 px-3 border-gray-300 rounded' type="date" placeholder='' />
           </div>
         </div>
-        <table className='mt-5 w-full border'>
+        {
+          SecurityHistory?.length >0 ?
+          <table className='mt-5 w-full border'>
           <tr>
             <th className='border-x'>#</th>
             <th className='border-x'>Photo</th>
@@ -34,25 +48,33 @@ function SecurityVisitLog() {
           </tr>
           <tbody>
             {/* Duplicate */}
-            <tr className='border-y text-center'>
-              <td className="border-x border-gray-400">1</td>
+            {
+              SecurityHistory.map((item,index)=>(
+                <tr className='border-y text-center'>
+              <td className="border-x border-gray-400">{index+1}</td>
               <td className="border-x border-gray-400 flex justify-center">
-                <img className='w-10 py-2' src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTB5cOHy6mU1zA_Ky6YVxl-C5T6twTXCr0aPTPTn5LmZRpc24mVSSpGMYCK&s=10" alt="" />
+                <img className='w-10 py-2' src={item.imgUrl} alt="" />
               </td>
-              <td className="">Rahul K</td>
-              <td className="border-x border-gray-400">VST20265432</td>
-              <td className="border-x border-gray-400">+91 7306201861</td>
-              <td className="border-x border-gray-400">Meeting</td>
-              <td className="border-x border-gray-400">06/05/2026</td>
-              <td className="border-x border-gray-400">9:56 AM</td>
+              <td className="">{item.name}</td>
+              <td className="border-x border-gray-400">{item.id}</td>
+              <td className="border-x border-gray-400">{item.phone}</td>
+              <td className="border-x border-gray-400">{item.purpose}</td>
+              <td className="border-x border-gray-400">{item.date}</td>
+              <td className="border-x border-gray-400">{item.ExpectedTime}</td>
               <td className="border-x border-gray-400">12:55 PM</td>
               <td className="border-x border-gray-400">
                 <button className='px-3 py-1 bg-green-600 text-white rounded mx-2'>Update Check-Out</button>
               </td>
             </tr>
+              ))
+              }
             
           </tbody>
-        </table>
+        </table> :
+        <div className='flex justify-center my-30 items-center'>
+          <img className='h-100' src="https://assets-v2.lottiefiles.com/a/0953d504-117d-11ee-aa49-1f149204cb5f/9uZcoEJaoF.gif" alt="" />
+        </div>
+        }
       </div>
 
     </div>
