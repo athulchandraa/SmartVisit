@@ -42,3 +42,8 @@ const response=await axiosService("GET",`/security/${id}`,{})
 const updated=[...(response.data.accessed || []),...data]
 return await axiosService("PATCH",`/security/${id}`,{accessed:updated})
 }
+
+//Change Active/inactive State
+export const StatusChange=async(data)=>{
+    return await axiosService("PATCH",`/security/${data.id}`,data)
+}

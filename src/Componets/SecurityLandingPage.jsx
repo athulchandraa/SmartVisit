@@ -3,16 +3,21 @@ import AdminSideBar from '../Pages/AdminSideBar'
 import { useParams } from 'react-router-dom'
 import { IoCheckmarkCircle } from 'react-icons/io5'
 import { Html5Qrcode } from 'html5-qrcode'
-import { AccessedVisitors, DltVisitor, VisitorsList } from '../Api/ApiService'
+import { AccessedVisitors, DltVisitor, GetSecurity, VisitorsList } from '../Api/ApiService'
 import Swal from 'sweetalert2'
 import { toast } from 'react-toastify'
+import { FaArrowRight } from 'react-icons/fa'
+import { CgSmileSad } from 'react-icons/cg'
 
 
 function SecurityLandingPage() {
+  const {id}=useParams()
 
   const [allVisitorsList,setAllVisitorsList]=useState(null)
   const[SpecificVis,setSpecificVis]=useState(null)
   console.log(allVisitorsList);
+  const[thisSecurity,setThisSecurity]=useState(null)
+  console.log(thisSecurity);
   
 
   //For Scanner
@@ -52,7 +57,8 @@ function SecurityLandingPage() {
     },[isScanning])
 
     useEffect(()=>{
-      allVisitors()
+      allVisitors(),
+      CurrentGuard()
     },[])
 
     const allVisitors=async()=>{
@@ -103,14 +109,23 @@ function SecurityLandingPage() {
       window.location.reload()
     }
 
+    //Status wise Operation
+    const CurrentGuard=async()=>{
+      const response=await GetSecurity()
+      const response1=response.data;
+      setThisSecurity(response1.filter(item=>item?.id==id)[0].status);
+    }
 
 
 
-  const {id}=useParams()
+
+  
   return (
     <div className='flex'>
       <AdminSideBar sidebar id={id}/>
-      <div className='ml-90 shadow rounded h-screen w-full p-5'>
+      {
+        thisSecurity=="active" ?
+        <div className='ml-90 shadow rounded h-screen w-full p-5'>
         <div className='p-2'>
           <p className='text-3xl font-medium'>Scan Visitor QR Code</p>
           <p className='text-gray-600'>Point the camera at the visitor's QR Code</p>
@@ -214,7 +229,18 @@ function SecurityLandingPage() {
             }
 
         </div>
+      </div> :
+      <div className='ml-90 p-2 w-300'>
+        <div className='shadow w-full p-10 h-screen flex flex-col justify-center items-center'>
+              <img className='' src="https://media.lordicon.com/icons/wired/outline/2100-wifi-cross.gif" alt="" />
+              <div className='text-center'>
+                <p className='my-2'>It seems You are Offline!😔</p>
+                <p className='font-medium text-2xl'>Steps for Switch online</p>
+                <p className='flex justify-center items-center gap-5 font-medium text-lg'>My Profile <FaArrowRight/> <span>Change <span className='text-red-600'>Inactive</span> to <span className='text-green-600'>Active</span></span></p>
+              </div>
+        </div>
       </div>
+      }
     </div>
   )
 }

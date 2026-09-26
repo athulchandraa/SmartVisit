@@ -5,7 +5,7 @@ import { GoDotFill } from "react-icons/go";
 import { FaUser } from "react-icons/fa6";
 import AdminSideBar from '../Pages/AdminSideBar';
 import { useParams } from 'react-router-dom';
-import { GetSecurity } from '../Api/ApiService';
+import { GetSecurity, StatusChange } from '../Api/ApiService';
 
 
 function SecurityProfile() {
@@ -20,6 +20,20 @@ function SecurityProfile() {
     const response=await GetSecurity()
     const response1=response.data
     setAsecurity(response1.find(item=>item.id==id));
+  }
+
+  //Change Active to Inactive
+  const ChangeInactive=async()=>{
+    const UpdatedData={...Asecurity,status:"inactive"}
+    const response=await StatusChange(UpdatedData)
+    setAsecurity(response.data)
+  }
+  //ChangeActive
+
+  const ChangeActive=async()=>{
+    const UpdatedData={...Asecurity,status:"active"}
+    const response=await StatusChange(UpdatedData)
+    setAsecurity(response.data)
   }
 
   return (
@@ -48,18 +62,30 @@ function SecurityProfile() {
               <p className='text-sm text-gray-500'>Committed to a safer environment</p>
             </div>
           </div>
+          
           <div>
             {
               Asecurity.status=="active" ?
-              <p className='text-green-700 font-medium bg-green-200 px-3 py-1 rounded w-fit rounded-2xl flex items-center gap-2'><GoDotFill/>Active</p>
+              <button onClick={ChangeInactive} className='text-green-700 font-medium bg-green-200 px-3 py-1 rounded w-fit rounded-2xl flex items-center gap-2'><GoDotFill/>Active</button>
               :
-              <p className='text-red-700 font-medium bg-red-200 px-3 py-1 rounded w-fit rounded-2xl flex items-center gap-2'><GoDotFill/>Inactive</p>
+              <button onClick={ChangeActive} className='text-red-700 font-medium bg-red-200 px-3 py-1 rounded w-fit rounded-2xl flex items-center gap-2'><GoDotFill/>Inactive</button>
             }
             <div>
               <p className='text-gray-400 text-sm'>Security ID</p>
               <p className='font-medium'>SEC{Asecurity.securityId}</p>
             </div>
           </div>
+          {/* <div>
+            Active Inactive Toggle
+            <div className='flex gap-2'>
+              <p className='text-2xl font-medium text-red-600'>Offline</p>
+              <label className="relative inline-flex items-center cursor-pointer">
+              <input type="checkbox" className="sr-only peer" defaultValue />
+              <div className="group peer bg-white rounded-full duration-300 w-16 h-8 ring-2 ring-red-500 after:duration-300 after:bg-red-500 peer-checked:after:bg-green-500 peer-checked:ring-green-500 after:rounded-full after:absolute after:h-6 after:w-6 after:top-1 after:left-1 after:flex after:justify-center after:items-center peer-checked:after:translate-x-8 peer-hover:after:scale-95" />
+            </label>
+            <p className='text-2xl font-medium text-green-600'>Online</p>
+            </div>
+          </div> */}
         </div>
         <div className='my-5  shadow rounded px-2 py-5'>
           <p className='flex items-center gap-2 font-medium my-2'><FaUser/>Personal Information</p>
