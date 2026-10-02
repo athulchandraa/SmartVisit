@@ -43,10 +43,10 @@ function SecurityLogin() {
     }
 
   return (
-    <div className='h-screen flex justify-center items-center p-3'>
-        <div className='shadow rounded p-5 w-250'>
+    <div className='min-h-screen w-full flex justify-center items-center p-3 sm:p-5'>
+        <div className='shadow rounded p-4 sm:p-5 w-full max-w-2xl'>
             <div className='text-center'>
-                <p className='text-3xl font-medium text-center my-2'>Security Login</p>
+                <p className='text-2xl sm:text-3xl font-medium text-center my-2'>Security Login</p>
                 <p className='text-gray-600 text-sm'>Please Login with your credentials</p>
                 <div className='my-5'>
                     <input value={userInput.securityId} onChange={(e)=>{setUserInput({...userInput,securityId:e.target.value})}} className='my-2 border w-full px-3 py-1 rounded border-gray-300 focus:border-blue-500 focus:outline-none transition duration-300' type="text" placeholder='Security ID' />
@@ -54,7 +54,7 @@ function SecurityLogin() {
                     <button onClick={LoginBtn} className='py-1.5 bg-green-600 w-full rounded font-medium text-white my-4'>Login</button>
                 </div>
                 <div className='flex justify-center'>
-                    <Link to={'/'} className='flex items-center gap-2 text-green-600'><FaArrowLeft/>Back to role selection</Link>
+                    <Link to={'/'} className='flex items-center gap-2 text-sm sm:text-base text-green-600'><FaArrowLeft/>Back to role selection</Link>
                 </div>
             </div>
         </div>

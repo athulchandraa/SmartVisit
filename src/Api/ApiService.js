@@ -47,3 +47,15 @@ return await axiosService("PATCH",`/security/${id}`,{accessed:updated})
 export const StatusChange=async(data)=>{
     return await axiosService("PATCH",`/security/${data.id}`,data)
 }
+
+//Update Security Data
+export const UpdateGuardsData=async(data)=>{
+    return await axiosService("PUT",`/security/${data.id}`,data)
+}
+
+//Update Checkout Time
+export const UpdateCheckOutTimeInServer=async(id,data,checkOutTime)=>{
+    const response=await axiosService("GET",`/security/${id}`,{})
+    const updated=response.data.accessed.map(item=>item.id==data.id ? {...item,checkout:checkOutTime} : item)
+    return await axiosService("PATCH",`/security/${id}`,{accessed:updated})
+}

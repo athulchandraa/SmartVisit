@@ -85,13 +85,13 @@ function CameraAccess({onPhotoCapture}) {
                     <video ref={videoRef}
                     autoPlay
                     playsInline
-                    className="w-80 rounded-lg border"
+                    className="h-auto w-full max-w-80 rounded-lg border"
                     />
                     <button type="button" onClick={capturePhoto} className="bg-blue-600 text-white px-5 py-2 rounded-lg mt-3">Capture Photo</button>
                 </>
             ):(
                 <>
-                <img src={photo} alt="Visitor" className="w-80 rounded-lg"/>
+                <img src={photo} alt="Visitor" className="h-auto w-full max-w-80 rounded-lg"/>
                 <button type="button" onClick={retakePhoto} className="bg-gray-600 text-white px-5 py-2 rounded-lg mt-3">Retake</button>
                 </>
             )

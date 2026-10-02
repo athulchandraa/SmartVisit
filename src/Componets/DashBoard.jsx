@@ -11,19 +11,19 @@ import { Link } from 'react-router-dom';
 
 function DashBoard() {
   return (
-    <div className=' md:h-screen h-fit bg-cover bg-center flex justify-center items-center ' style={{backgroundImage:`url(${BgImage})`}}>
+    <div className='min-h-screen w-full overflow-x-hidden bg-cover bg-center flex justify-center items-center px-3 py-6 sm:px-5 sm:py-10' style={{backgroundImage:`url(${BgImage})`}}>
       <div className=''>
         <div className=' flex justify-center'>
-          <div className='flex justify-center items-center text-white my-10'>
-            <GiAmericanShield className='text-6xl'/>
+          <div className='flex justify-center items-center text-white my-6 sm:my-10'>
+            <GiAmericanShield className='text-5xl sm:text-6xl'/>
             <div>
-                <p className='text-3xl font-medium'>Smart Visit</p>
-                <p>Choose your role to continue</p>
+                <p className='text-2xl sm:text-3xl font-medium'>Smart Visit</p>
+                <p className='text-sm sm:text-base'>Choose your role to continue</p>
             </div>
           </div>
         </div>
-        <div className='md:grid md:flex grid-cols-3 gap-5 p-5 justify-items-center'>
-          <div style={{width:"300px"}} className='shadow p-3 w-fit text-center bg-white rounded my-2'>
+        <div className='grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 gap-3 sm:gap-5 p-2 sm:p-5 justify-items-center'>
+          <div className='shadow p-3 w-full max-w-75 text-center bg-white rounded my-2'>
             <div className='flex justify-center'><RiAdminFill className='text-blue-600 text-4xl'/></div>
             <div className=''>
               <p className='text-3xl font-medium'>Admin</p>
@@ -34,7 +34,7 @@ function DashBoard() {
             </div>
           </div>
   
-          <div style={{width:"300px"}} className='shadow p-3 text-center bg-white rounded my-2'>
+          <div className='shadow p-3 w-full max-w-75 text-center bg-white rounded my-2'>
             <div className='flex justify-center'><GiGuards className=' text-4xl text-green-600'/></div>
             <div className=''>
               <p className='text-3xl font-medium '>Security</p>
@@ -43,7 +43,7 @@ function DashBoard() {
             </div>
           </div>
   
-          <div style={{width:"300px"}} className='shadow p-3 w-fit text-center bg-white rounded my-2'>
+          <div className='shadow p-3 w-full max-w-75 text-center bg-white rounded my-2'>
             <div className='flex justify-center'><IoPeople className=' text-4xl text-purple-600'/></div>
             <div className=''>
               <p className='text-3xl font-medium '>Visitor</p>
@@ -52,7 +52,7 @@ function DashBoard() {
             </div>
           </div>
         </div>
-        <p className='text-center text-white  my-10'>A safer tomorrow starts with a smarter today</p>
+        <p className='text-center text-white my-6 sm:my-10'>A safer tomorrow starts with a smarter today</p>
       </div>
     </div>
   )

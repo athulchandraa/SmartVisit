@@ -44,7 +44,7 @@ function AdminSideBar({sidebar,id,menuIcon,setMenuIcon}) {
             <div className='flex flex-col justify-center items-center h-20'>
                 <div className='flex items-center w-full justify-between'>
                     <p className='ml-0 text-3xl font-medium text-white lg:ml-25'>Smart Visit</p>
-                    <IoClose onClick={()=>setMenuIcon(false)} className='cursor-pointer text-3xl'/>
+                    {/* <IoClose onClick={()=>setMenuIcon(false)} className='cursor-pointer text-3xl'/> */}
                 </div>
                 {
                     sidebar ?

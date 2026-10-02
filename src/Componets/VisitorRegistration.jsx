@@ -21,7 +21,8 @@ function VisitorRegistration() {
     time:"",
     imgUrl:"",
     date:"",
-    visitorId:num
+    visitorId:num,
+    checkout:""
   })
   console.log(visitorData);
 
@@ -74,13 +75,13 @@ function VisitorRegistration() {
 
 
   return (
-    <div className='bg-cover bg-center bg-no-repeat h- p-4 text-black'>
+    <div className='min-h-screen w-full overflow-x-hidden bg-cover bg-center bg-no-repeat p-4 sm:p-6 lg:p-8 text-black'>
       <div>
-        <p className='text-3xl text-black font-medium'>Visitor Registration Form</p>
-        <p className='text-gray-500'>Fill in your details to get your visitor pass</p>
+        <p className='text-2xl sm:text-3xl text-black font-medium'>Visitor Registration Form</p>
+        <p className='text-sm sm:text-base text-gray-500'>Fill in your details to get your visitor pass</p>
       </div>
       <form action="">
-        <div className='flex justify-between items-center gap-5 mt-5 mb-3'>
+        <div className='flex flex-col sm:flex-row justify-between items-stretch sm:items-center gap-3 sm:gap-5 mt-5 mb-3'>
           <div className='w-full'>
             <p className='text-sm'>Full Name<span className='text-red-600'>*</span></p>
             <input onChange={(e)=>setVisitorData({...visitorData,name:e.target.value})} className='border rounded px-3 py-0.5 w-full' placeholder='Enter Full Name' required type="text" />
@@ -96,7 +97,7 @@ function VisitorRegistration() {
             <input value={visitorData.mail} onChange={(e)=>setVisitorData({...visitorData,mail:e.target.value})} className='border rounded px-3 py-0.5 w-full' placeholder='abc@gmail.com' required type="email" />
           </div>
         </div>
-        <div className='flex justify-between items-center gap-5 mt-5 mb-3'>
+        <div className='flex flex-col sm:flex-row justify-between items-stretch sm:items-center gap-3 sm:gap-5 mt-5 mb-3'>
           <div className='w-full'>
             <p className='text-sm'>Purpose of Visit <span className='text-red-600'>*</span></p>
             <input value={visitorData.value} onChange={(e)=>setVisitorData({...visitorData,purpose:e.target.value})} className='border w-full py-0.5 px-3 rounded' placeholder='Enter Purpose of Visit' type="text" />
@@ -106,7 +107,7 @@ function VisitorRegistration() {
             <input value={visitorData.value} onChange={(e)=>setVisitorData({...visitorData,person:e.target.value})} className='w-full border py-0.5 px-3 rounded' placeholder='Meeting person name' type="text" />
           </div>
         </div>
-        <div className='flex justify-between items-center gap-5 mt-5 mb-3'>
+        <div className='flex flex-col sm:flex-row justify-between items-stretch sm:items-center gap-3 sm:gap-5 mt-5 mb-3'>
           <div className='w-full'>
             <p className='text-sm'>Room No <span className='text-red-600'>*</span></p>
             <input value={visitorData.value} onChange={(e)=>setVisitorData({...visitorData,room:e.target.value})} className='border w-full py-0.5 px-3 rounded' placeholder='Room Number' type="text" />

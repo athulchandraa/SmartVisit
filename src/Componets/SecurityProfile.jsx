@@ -47,19 +47,19 @@ function SecurityProfile() {
         <button type="button" aria-label="Open sidebar" className='mb-2 lg:hidden' onClick={()=>setMenuIcon(!menuIcon)}>
           <IoMenu className='text-3xl'/>
         </button>
-        <div className='flex justify-between items-center shadow p-2'>
-          <div>
+        <div className='flex flex-col sm:flex-row justify-between items-stretch sm:items-center gap-3 shadow p-2'>
+          <div className='min-w-0'>
             <p className='text-xl font-medium'>My Profile</p>
             <p className='text-gray-500'>View your personal information and account details</p>
           </div>
           <button className='px-3 py-1 bg-blue-600 text-white font-medium rounded flex items-center gap-2'><MdOutlineEdit/>Edit Profile</button>
         </div>
-        <div className='p-2 mt-5 shadow rounded flex justify-between items-center px-4'>
+        <div className='p-2 mt-5 shadow rounded flex flex-col sm:flex-row justify-between items-stretch sm:items-center gap-4 px-4'>
           {/* image */}
           
-          <div className='flex items-center gap-5'>
+          <div className='flex min-w-0 flex-col sm:flex-row items-center gap-3 sm:gap-5'>
             <div>
-            <img className='w-40 h-40 rounded-full' src={Asecurity.image} alt="" />
+            <img className='h-28 w-28 sm:h-40 sm:w-40 rounded-full object-cover' src={Asecurity.image} alt="" />
           </div>
             <div>
               <p className='text-2xl font-medium'>{Asecurity.name}</p>
@@ -68,7 +68,7 @@ function SecurityProfile() {
             </div>
           </div>
           
-          <div>
+          <div className='flex items-center justify-between gap-4 sm:block'>
             {
               Asecurity.status=="active" ?
               <button onClick={ChangeInactive} className='text-green-700 font-medium bg-green-200 px-3 py-1 rounded w-fit rounded-2xl flex items-center gap-2'><GoDotFill/>Active</button>
@@ -92,48 +92,40 @@ function SecurityProfile() {
             </div>
           </div> */}
         </div>
-        <div className='my-5  shadow rounded px-2 py-5'>
+        <div className='my-5 shadow rounded px-2 py-5'>
           <p className='flex items-center gap-2 font-medium my-2'><FaUser/>Personal Information</p>
           <hr className='text-gray-300'/>
 
-          <div className='flex items-center gap-75'>
-            <p className='flex items-center gap-2 text-gray-600 my-2'><FaUser/>Name</p>
-            <p>{Asecurity?.name}</p>
+          <div className='grid grid-cols-1 gap-x-6'>
+          <div className='flex items-center justify-between gap-4 border-b border-gray-200 py-2 sm:border-0'>
+            <p className='flex items-center gap-2 text-gray-600'><FaUser/>Name</p>
+            <p className='min-w-0 break-words'>{Asecurity?.name}</p>
           </div>
-          <hr className='text-gray-300'/>
-          <div className='flex items-center gap-72'>
-            <p className='flex items-center gap-2 text-gray-600 my-2'><FaUser/>ID Card</p>
-            <p> {Asecurity?.id}</p>
+          <div className='flex items-center justify-between gap-4 border-b border-gray-200 py-2 sm:border-0'>
+            <p className='flex items-center gap-2 text-gray-600'><FaUser/>ID Card</p>
+            <p className='min-w-0 break-words'>{Asecurity?.id}</p>
           </div>
-          <hr className='text-gray-300'/>
-          <div className='flex items-center gap-72'>
-            <p className='flex items-center gap-2 text-gray-600 my-2'><FaUser/>Gender</p>
-            <p>{Asecurity?.gender}</p>
+          <div className='flex items-center justify-between gap-4 border-b border-gray-200 py-2 sm:border-0'>
+            <p className='flex items-center gap-2 text-gray-600'><FaUser/>Gender</p>
+            <p className='min-w-0 break-words'>{Asecurity?.gender}</p>
           </div>
-          <hr className='text-gray-300'/>
-          <div className='flex items-center gap-62'>
-            <p className='flex items-center gap-2 text-gray-600 my-2'><FaUser/>Date of Birth</p>
-            <p>{Asecurity?.dob}</p>
+          <div className='flex items-center justify-between gap-4 border-b border-gray-200 py-2 sm:border-0'>
+            <p className='flex items-center gap-2 text-gray-600'><FaUser/>Date of Birth</p>
+            <p className='min-w-0 break-words'>{Asecurity?.dob}</p>
           </div>
-          <hr className='text-gray-300'/>
-
-          <div className='flex items-center gap-76'>
-            <p className='flex items-center gap-2 text-gray-600 my-2'><FaUser/>Email</p>
-            <p>{Asecurity?.mail}</p>
+          <div className='flex items-center justify-between gap-4 border-b border-gray-200 py-2 sm:border-0'>
+            <p className='flex items-center gap-2 text-gray-600'><FaUser/>Email</p>
+            <p className='min-w-0 break-all'>{Asecurity?.mail}</p>
           </div>
-          <hr className='text-gray-300'/>
-
-          <div className='flex items-center gap-74'>
-            <p className='flex items-center gap-2 text-gray-600 my-2'><FaUser/>Phone</p>
-            <p>{Asecurity?.phone}</p>
+          <div className='flex items-center justify-between gap-4 border-b border-gray-200 py-2 sm:border-0'>
+            <p className='flex items-center gap-2 text-gray-600'><FaUser/>Phone</p>
+            <p className='min-w-0 break-words'>{Asecurity?.phone}</p>
           </div>
-          <hr className='text-gray-300'/>
-
-          <div className='flex items-center gap-72'>
-            <p className='flex items-center gap-2 text-gray-600 my-2'><FaUser/>Status</p>
-            <p className='ml-2'>{Asecurity?.status.toUpperCase()}</p>
+          <div className='flex items-center justify-between gap-4 py-2'>
+            <p className='flex items-center gap-2 text-gray-600'><FaUser/>Status</p>
+            <p className='min-w-0 break-words'>{Asecurity?.status.toUpperCase()}</p>
           </div>
-          <hr className='text-gray-300'/>
+          </div>
           
         </div>
       </div>}

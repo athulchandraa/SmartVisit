@@ -22,7 +22,6 @@ function AdminDashBoard() {
   //For Responsive
   const[menuIcon,setMenuIcon]=useState(false)
   
-  
 
   const TotalVisitors=async()=>{
     const response=await VisitorsList()
@@ -37,7 +36,9 @@ function AdminDashBoard() {
   useEffect(()=>{
     TotalVisitors(),
     totalSecurity()
-  },[])
+    },[])
+
+
 
   return (
     <div className='flex min-h-screen w-full overflow-x-hidden'>
@@ -53,13 +54,13 @@ function AdminDashBoard() {
                 <button type="button" aria-label="Open sidebar" className='lg:hidden' onClick={()=>setMenuIcon(!menuIcon)}>
                   <IoMenu className='text-3xl'/>
                 </button>}
-              <div>
-                <p className='text-3xl font-medium'>Welcome, Admin</p>
-                <p className='text-gray-400'>Here's an overview of your visit management system</p>
+              <div className='min-w-0'>
+                <p className='text-2xl sm:text-3xl font-medium'>Welcome, Admin</p>
+                <p className='text-sm sm:text-base text-gray-400'>Here's an overview of your visit management system</p>
               </div>
             </div>
-            <div className='flex flex-col gap-5 justify-center items-center md:grid grid-cols-4 justify-items-center mt-5'>
-              <div className='flex items-center gap-3 shadow w-fit p-3 rounded bg-blue-200'>
+            <div className='grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-4 gap-4 mt-5'>
+              <div className='flex items-center gap-3 shadow w-full p-3 rounded bg-blue-200'>
                 <FaUserClock className='text-4xl text-blue-600' />
                 <div>
                   <p className='text-blue-600'>Total Visitors</p>
@@ -67,7 +68,7 @@ function AdminDashBoard() {
                 </div>
               </div>
 
-              <div className='flex items-center gap-3 shadow w-fit p-3 rounded bg-green-200'>
+              <div className='flex items-center gap-3 shadow w-full p-3 rounded bg-green-200'>
                 <FaUserShield className='text-4xl text-green-600' />
                 <div>
                   <p className='text-green-600'>Total Security</p>
@@ -75,15 +76,15 @@ function AdminDashBoard() {
                 </div>
               </div>
 
-              <div className='flex items-center gap-3 shadow w-fit p-3 rounded bg-purple-200'>
+              <div className='flex items-center gap-3 shadow w-full p-3 rounded bg-purple-200'>
                 <FaUserCheck className='text-4xl text-purple-600' />
                 <div>
                   <p className='text-purple-600'>Today Vistors</p>
-                  <p className='text-3xl text-purple-600 font-medium'>{VisitorsTotal?.filter(item=>item.id==TodayDate).length}</p>
+                  <p className='text-3xl text-purple-600 font-medium'>{VisitorsTotal?.filter(item=>item.date==TodayDate).length}</p>
                 </div>
               </div>
 
-              <div className='flex items-center gap-3 shadow w-fit p-3 rounded bg-yellow-200'>
+              <div className='flex items-center gap-3 shadow w-full p-3 rounded bg-yellow-200'>
                 <FaBuildingUser className='text-4xl text-yellow-600' />
                 <div>
                   <p className='text-yellow-600'>Active Now</p>
