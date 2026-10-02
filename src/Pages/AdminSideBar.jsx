@@ -2,16 +2,17 @@ import React from 'react'
 import { Link, useNavigate } from 'react-router-dom'
 import { MdOutlineDashboard } from "react-icons/md";
 import { RiUserSettingsLine } from "react-icons/ri";
-import { FaUser, FaUsersCog } from "react-icons/fa";
+import { FaCross, FaUser, FaUsersCog } from "react-icons/fa";
 import { TbReportSearch } from "react-icons/tb";
 import { IoIosLogOut } from "react-icons/io";
 import Swal from 'sweetalert2';
 import { MdQrCodeScanner } from "react-icons/md";
 import { CiBoxList } from "react-icons/ci";
+import { IoClose } from 'react-icons/io5';
 
 
 
-function AdminSideBar({sidebar,id}) {
+function AdminSideBar({sidebar,id,menuIcon,setMenuIcon}) {
     const Location=useNavigate()
 
     const logout=()=>{
@@ -31,10 +32,20 @@ function AdminSideBar({sidebar,id}) {
     }
 
   return (
-       <div className='border w-90 bg-slate-900 px-3 rounded fixed left-0 top-0 min-h-screen text-white flex flex-col justify-between'>
+       <>
+       {menuIcon && <button
+        type="button"
+        aria-label="Close sidebar"
+        onClick={()=>setMenuIcon(false)}
+        className='fixed inset-0 z-40 bg-black/50 opacity-100 transition-opacity duration-300 lg:hidden'
+       />}
+       <div className={`${menuIcon ? 'translate-x-0' : '-translate-x-full'} fixed left-0 top-0 z-50 flex min-h-screen w-72 max-w-[85vw] flex-col justify-between overflow-y-auto rounded border bg-slate-900 px-3 text-white transition-transform duration-300 sm:w-80 lg:w-90 lg:max-w-none lg:translate-x-0`}>
         <div >
             <div className='flex flex-col justify-center items-center h-20'>
-                <p className='text-3xl font-medium text-white'>Smart Visit</p>
+                <div className='flex items-center w-full justify-between'>
+                    <p className='ml-0 text-3xl font-medium text-white lg:ml-25'>Smart Visit</p>
+                    <IoClose onClick={()=>setMenuIcon(false)} className='cursor-pointer text-3xl'/>
+                </div>
                 {
                     sidebar ?
                     <p className='text-gray-600'>Welcome Security</p>
@@ -92,6 +103,7 @@ function AdminSideBar({sidebar,id}) {
         </Link>
         
     </div>
+    </>
   )
 }
 

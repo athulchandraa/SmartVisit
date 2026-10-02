@@ -11,7 +11,7 @@ import { Link } from 'react-router-dom';
 
 function DashBoard() {
   return (
-    <div className='h-screen bg-cover bg-center flex justify-center items-center ' style={{backgroundImage:`url(${BgImage})`}}>
+    <div className=' md:h-screen h-fit bg-cover bg-center flex justify-center items-center ' style={{backgroundImage:`url(${BgImage})`}}>
       <div className=''>
         <div className=' flex justify-center'>
           <div className='flex justify-center items-center text-white my-10'>
@@ -22,8 +22,8 @@ function DashBoard() {
             </div>
           </div>
         </div>
-        <div className='grid grid-cols-3 gap-5 p-5 justify-items-center'>
-          <div style={{width:"300px"}} className='shadow p-3 w-fit text-center bg-white rounded'>
+        <div className='md:grid md:flex grid-cols-3 gap-5 p-5 justify-items-center'>
+          <div style={{width:"300px"}} className='shadow p-3 w-fit text-center bg-white rounded my-2'>
             <div className='flex justify-center'><RiAdminFill className='text-blue-600 text-4xl'/></div>
             <div className=''>
               <p className='text-3xl font-medium'>Admin</p>
@@ -34,7 +34,7 @@ function DashBoard() {
             </div>
           </div>
   
-          <div style={{width:"300px"}} className='shadow p-3 text-center bg-white rounded'>
+          <div style={{width:"300px"}} className='shadow p-3 text-center bg-white rounded my-2'>
             <div className='flex justify-center'><GiGuards className=' text-4xl text-green-600'/></div>
             <div className=''>
               <p className='text-3xl font-medium '>Security</p>
@@ -43,7 +43,7 @@ function DashBoard() {
             </div>
           </div>
   
-          <div style={{width:"300px"}} className='shadow p-3 w-fit text-center bg-white rounded'>
+          <div style={{width:"300px"}} className='shadow p-3 w-fit text-center bg-white rounded my-2'>
             <div className='flex justify-center'><IoPeople className=' text-4xl text-purple-600'/></div>
             <div className=''>
               <p className='text-3xl font-medium '>Visitor</p>

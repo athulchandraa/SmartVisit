@@ -3,6 +3,7 @@ AdminSideBar
 import { MdOutlineEdit } from "react-icons/md";
 import { GoDotFill } from "react-icons/go";
 import { FaUser } from "react-icons/fa6";
+import { IoMenu } from 'react-icons/io5'
 import AdminSideBar from '../Pages/AdminSideBar';
 import { useParams } from 'react-router-dom';
 import { GetSecurity, StatusChange } from '../Api/ApiService';
@@ -10,6 +11,7 @@ import { GetSecurity, StatusChange } from '../Api/ApiService';
 
 function SecurityProfile() {
   const {id}=useParams()
+  const [menuIcon,setMenuIcon]=useState(false)
   useEffect(()=>{
     SecurityData()
   },[])
@@ -37,11 +39,14 @@ function SecurityProfile() {
   }
 
   return (
-    <div className='flex '>
-      <AdminSideBar sidebar id={id}/>
+    <div className='flex min-h-screen w-full overflow-x-hidden'>
+      <AdminSideBar sidebar id={id} menuIcon={menuIcon} setMenuIcon={setMenuIcon}/>
       {
         Asecurity &&
-        <div className='ml-90 shadow rounded h-screen w-full p-5'>
+        <div className='ml-0 min-w-0 w-full shadow rounded min-h-screen p-3 sm:p-5 lg:ml-90'>
+        <button type="button" aria-label="Open sidebar" className='mb-2 lg:hidden' onClick={()=>setMenuIcon(!menuIcon)}>
+          <IoMenu className='text-3xl'/>
+        </button>
         <div className='flex justify-between items-center shadow p-2'>
           <div>
             <p className='text-xl font-medium'>My Profile</p>

@@ -12,6 +12,7 @@ import { CiSearch } from "react-icons/ci";
 import Swal from 'sweetalert2';
 import { FaBackward } from "react-icons/fa";
 import { FaForward } from 'react-icons/fa6';
+import { IoMenu } from 'react-icons/io5';
 
 
 
@@ -65,7 +66,7 @@ function AdminManageSecurity() {
   const[allsecurity,setAllsecurity]=React.useState([])
 
 
-      //Pagination
+  //Pagination
   const [currentPage,setCurrentPage]=React.useState(1)
   const ItemsPerPage=6
   const TotalPages=Math.ceil(allsecurity.length/ItemsPerPage)
@@ -73,6 +74,8 @@ function AdminManageSecurity() {
   const CurrentPageFirstIndex=CurrentPageLastIndex-ItemsPerPage
   const visibleItemArray=allsecurity.slice(CurrentPageFirstIndex,CurrentPageLastIndex)
 
+  //For Responsive
+    const[menuIcon,setMenuIcon]=React.useState(false)
 
 
   const AddGuards=async(e)=>{
@@ -131,13 +134,26 @@ function AdminManageSecurity() {
     
 
   return (
-    <div className='flex'>
-      <AdminSideBar/>
-      <div className='ml-90 shadow rounded h-screen w-full p-5'>
+    <div className='flex min-h-screen w-full overflow-x-hidden'>
+        <AdminSideBar
+        menuIcon={menuIcon}
+        setMenuIcon={setMenuIcon}
+        />
+      <div className='ml-0 min-w-0 w-full shadow rounded min-h-screen p-3 sm:p-5 lg:ml-90'>
         <div className='flex justify-between items-center shadow rounded p-3'>
-          <div className=''>
-            <p className='text-xl font-medium'>Manage Security Staff</p>
-            <p className='text-gray-600'>Add,view and manage security personnel</p>
+
+          <div className='flex items-center gap-5'>
+            {
+              !menuIcon &&
+              <div>
+              <button type="button" aria-label="Open sidebar" className='lg:hidden' onClick={()=>setMenuIcon(!menuIcon)}>
+                <IoMenu className='text-3xl'/>
+              </button>
+            </div>}
+            <div>
+              <p className='text-xl font-medium'>Manage Security Staff</p>
+              <p className='text-gray-600'>Add,view and manage security personnel</p>
+            </div>
           </div>
           {/* <div className='flex gap-5'>
             <input className='border border-gray-300  px-3 py-1 w-80 rounded' type="text" placeholder='Search by Name or ID' />

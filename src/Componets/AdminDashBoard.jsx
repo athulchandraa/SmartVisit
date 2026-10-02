@@ -1,10 +1,12 @@
 import React, { useEffect, useState } from 'react'
 import { FaUserClock } from "react-icons/fa6";
-import { FaUserShield } from "react-icons/fa";
+import { FaArrowRight, FaCross, FaIcons, FaUserShield } from "react-icons/fa";
 import { FaUserCheck } from "react-icons/fa6";
 import { FaBuildingUser } from "react-icons/fa6";
 import AdminSideBar from '../Pages/AdminSideBar';
 import { GetSecurity, VisitorsList } from '../Api/ApiService';
+import { CiMenuBurger } from 'react-icons/ci';
+import { IoMenu } from 'react-icons/io5';
 
 
 
@@ -16,6 +18,9 @@ function AdminDashBoard() {
   const NowDate=new Date()
   const TodayDate=NowDate.toLocaleDateString()
   console.log(VisitorsTotal);
+
+  //For Responsive
+  const[menuIcon,setMenuIcon]=useState(false)
   
   
 
@@ -35,15 +40,25 @@ function AdminDashBoard() {
   },[])
 
   return (
-    <div className='flex'>
+    <div className='flex min-h-screen w-full overflow-x-hidden'>
       {/* SideBar */}
-      <AdminSideBar/>
-          <div className='ml-90 shadow rounded h-screen w-full p-5'>
-            <div>
-              <p className='text-3xl font-medium'>Welcome, Admin</p>
-              <p className='text-gray-400'>Here's an overview of your visit management system</p>
+      <AdminSideBar
+          menuIcon={menuIcon}
+          setMenuIcon={setMenuIcon}
+          />
+          <div className='ml-0 min-w-0 w-full shadow rounded min-h-screen p-3 sm:p-5 lg:ml-90'>
+            <div className='flex items-center gap-2'>
+              {
+                !menuIcon &&
+                <button type="button" aria-label="Open sidebar" className='lg:hidden' onClick={()=>setMenuIcon(!menuIcon)}>
+                  <IoMenu className='text-3xl'/>
+                </button>}
+              <div>
+                <p className='text-3xl font-medium'>Welcome, Admin</p>
+                <p className='text-gray-400'>Here's an overview of your visit management system</p>
+              </div>
             </div>
-            <div className='grid grid-cols-4 justify-items-center mt-5'>
+            <div className='flex flex-col gap-5 justify-center items-center md:grid grid-cols-4 justify-items-center mt-5'>
               <div className='flex items-center gap-3 shadow w-fit p-3 rounded bg-blue-200'>
                 <FaUserClock className='text-4xl text-blue-600' />
                 <div>
