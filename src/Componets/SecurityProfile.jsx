@@ -52,7 +52,7 @@ function SecurityProfile() {
             <p className='text-xl font-medium'>My Profile</p>
             <p className='text-gray-500'>View your personal information and account details</p>
           </div>
-          <button className='px-3 py-1 bg-blue-600 text-white font-medium rounded flex items-center gap-2'><MdOutlineEdit/>Edit Profile</button>
+          <button className='px-3 py-1 bg-blue-600 text-white font-medium rounded flex items-center gap-2 justify-center'><MdOutlineEdit/>Edit Profile</button>
         </div>
         <div className='p-2 mt-5 shadow rounded flex flex-col sm:flex-row justify-between items-stretch sm:items-center gap-4 px-4'>
           {/* image */}
