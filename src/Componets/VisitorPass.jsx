@@ -63,38 +63,38 @@ function VisitorPass() {
             <p className='font-medium text-center text-2xl'>Your Visitor Pass</p>
             <div className='flex justify-center mt-8'>
               <div className='flex justify-center'>
-                <QRCodeCanvas value={allVisitor?.id} size={200} level='H'/>
+                <QRCodeCanvas value={String(allVisitor?.id)} size={200} level='M'/>
+                {}
               </div>
             </div>
             <hr className='mt-5 text-gray-300'/>
-            <div className='flex justify-center my-5'>
-              
-              <div className='grid w-full grid-cols-[minmax(0,110px)_minmax(0,1fr)] gap-x-2 gap-y-3 text-xs sm:grid-cols-[minmax(0,160px)_minmax(0,1fr)] sm:gap-x-5 sm:text-sm'>
-                <span className='text-gray-500'>Unique ID</span>
-                <span className='min-w-0 break-words font-semibold'>{allVisitor.id}</span>
+            <div className='my-5 w-full min-w-0 md:mx-10 md:px-25'>
+              <div className='grid w-full min-w-0 grid-cols-[minmax(0,0.85fr)_minmax(0,1.15fr)] items-start gap-x-3 gap-y-3 text-xs sm:grid-cols-[minmax(0,160px)_minmax(0,1fr)] sm:gap-x-5 sm:gap-y-4 sm:text-sm'>
+                <span className=' text-gray-500'>Unique ID</span>
+                <span className='min-w-0 break-words font-semibold [overflow-wrap:anywhere]'>{allVisitor.id}</span>
   
-                <span className='text-gray-500'>Name of Visitor</span>
-                <span className='min-w-0 break-words font-semibold'>{allVisitor.name}</span>
+                <span className='min-w-0 text-gray-500'>Name of Visitor</span>
+                <span className='min-w-0 break-words font-semibold [overflow-wrap:anywhere]'>{allVisitor.name}</span>
   
-                <span className='text-gray-500'>Visit Person</span>
-                <span className='min-w-0 break-words font-semibold'>{allVisitor.person}</span>
+                <span className='min-w-0 text-gray-500'>Visit Person</span>
+                <span className='min-w-0 break-words font-semibold [overflow-wrap:anywhere]'>{allVisitor.person}</span>
   
-                <span className='text-gray-500'>Room no</span>
-                <span className='min-w-0 break-words font-semibold'>{allVisitor.room}</span>
+                <span className='min-w-0 text-gray-500'>Room no</span>
+                <span className='min-w-0 break-words font-semibold [overflow-wrap:anywhere]'>{allVisitor.room}</span>
   
-                <span className='text-gray-500'>Visit Purpose</span>
-                <span className='min-w-0 break-words font-semibold'>{allVisitor.purpose}</span>
+                <span className='min-w-0 text-gray-500'>Visit Purpose</span>
+                <span className='min-w-0 break-words font-semibold [overflow-wrap:anywhere]'>{allVisitor.purpose}</span>
   
-                <span className='text-gray-500'>Valid on</span>
-                <span className='font-semibold'>{
+                <span className='min-w-0 text-gray-500'>Valid on</span>
+                <span className='min-w-0 break-words font-semibold [overflow-wrap:anywhere]'>{
                     date.toLocaleDateString()
                     }</span>
   
-                <span className='text-gray-500'>Visit Time</span>
-                <span className='min-w-0 break-words font-semibold'>{allVisitor.ExpectedTime}</span>
+                <span className='min-w-0 text-gray-500'>Visit Time</span>
+                <span className='min-w-0 break-words font-semibold [overflow-wrap:anywhere]'>{allVisitor.ExpectedTime}</span>
   
-                <span className='text-gray-500'>Visit Purpose</span>
-                <span className='min-w-0 break-words font-semibold'>{allVisitor.purpose}</span>
+                <span className='min-w-0 text-gray-500'>Visit Purpose</span>
+                <span className='min-w-0 break-words font-semibold [overflow-wrap:anywhere]'>{allVisitor.purpose}</span>
   
               </div>
             </div>

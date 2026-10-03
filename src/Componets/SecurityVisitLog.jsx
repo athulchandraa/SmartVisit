@@ -99,7 +99,7 @@ function SecurityVisitLog() {
           </div>
         </div>
         {
-          SecurityHistory?.length >0 ?
+          SecurityHistory ?
           <div className='table-shell mt-5 w-full'>
           <table className='data-table min-w-[68rem]'>
           <tr>

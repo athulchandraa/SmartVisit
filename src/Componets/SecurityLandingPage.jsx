@@ -24,9 +24,10 @@ function SecurityLandingPage() {
   
 
   //For Scanner
-    const[result,setResult]=useState("")
+    const[result,setResult]=useState(null)
     const[isScanning,setIsScanning]=useState(false)
     const ScannerRef=useRef(null)
+    console.log(result);
     
     useEffect(()=>{
       if(!isScanning)return
@@ -37,16 +38,22 @@ function SecurityLandingPage() {
 
       const startScanner=async ()=>{
         try{
+          console.log("Scanner starting....");
           await scanner.start(
             {facingMode:"environment"},
             {fps:10,qrbox:250},
             (decodedText)=>{
               if(Cancelled)return
               setResult(decodedText)
+              console.log(decodedText);
               setIsScanning(false)
             },
             ()=>{}
           );
+          console.log("Scanner started successfully");
+          console.log(result);
+          
+          
         }catch(error){
           console.error(error)
           setIsScanning(false)
@@ -174,6 +181,7 @@ function SecurityLandingPage() {
               result &&(
                 <div className='mt-5 p-4 bg-green-100 rounded'>
                   <h3 className='text-green-600 font-medium'>Scan Successful!</h3>
+                  {console.log(result)}
                 </div>
               )
             }

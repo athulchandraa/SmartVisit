@@ -39,9 +39,9 @@ function AdminSideBar({sidebar,id,menuIcon,setMenuIcon}) {
         onClick={()=>setMenuIcon(false)}
         className='fixed inset-0 z-40 bg-black/50 opacity-100 transition-opacity duration-300 lg:hidden'
        />}
-       <div className={`${menuIcon ? 'translate-x-0' : '-translate-x-full'} fixed left-0 top-0 z-50 flex min-h-screen w-72 max-w-[85vw] flex-col justify-between overflow-y-auto rounded border bg-slate-900 px-3 text-white transition-transform duration-300 sm:w-80 lg:w-90 lg:max-w-none lg:translate-x-0`}>
-        <div >
-            <div className='flex flex-col justify-center items-center h-20'>
+       <div className={`${menuIcon ? 'translate-x-0' : '-translate-x-full'} fixed left-0 top-0 z-50 flex h-[100dvh] w-72 max-w-[85vw] flex-col overflow-hidden rounded border bg-slate-900 px-3 text-white transition-transform duration-300 sm:w-80 lg:h-screen lg:w-90 lg:max-w-none lg:translate-x-0`}>
+        <div className='flex min-h-0 flex-1 flex-col'>
+            <div className='flex shrink-0 flex-col justify-center items-center h-20'>
                 <div className='flex items-center w-full justify-between'>
                     <p className='ml-0 text-3xl font-medium text-white lg:ml-25'>Smart Visit</p>
                     {/* <IoClose onClick={()=>setMenuIcon(false)} className='cursor-pointer text-3xl'/> */}
@@ -52,6 +52,7 @@ function AdminSideBar({sidebar,id,menuIcon,setMenuIcon}) {
                     :
                     <p className='text-gray-600'>Welcome Admin</p>}
             </div>
+            <nav className='min-h-0 flex-1 overflow-y-auto'>
             {
                 sidebar ? 
                 <Link to={`/securitylandingpage/${id}`} className='flex items-center gap-4 px-5 py-4 rounded-xl hover:bg-slate-800'>
@@ -93,11 +94,9 @@ function AdminSideBar({sidebar,id,menuIcon,setMenuIcon}) {
             </Link>
             }
 
-            <div className='flex items-bottom'>
-            
+            </nav>
         </div>
-        </div>
-        <Link onClick={logout} className='flex items-center gap-4 px-5 py-4 rounded-xl hover:bg-slate-800'>
+        <Link onClick={logout} className='mt-auto flex shrink-0 items-center gap-4 px-5 py-4 rounded-xl hover:bg-slate-800'>
                 <IoIosLogOut className='text-xl'/>
                 <p className='text-xl '>Logout</p>
         </Link>
