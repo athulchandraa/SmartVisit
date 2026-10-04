@@ -217,8 +217,8 @@ function AdminManageSecurity() {
               <td className="">{item.password}</td>
               <td className="">{item.status =="active" ? <p className='table-status bg-green-100 text-green-700'><GoDotFill/>Active</p> : <p className='table-status bg-red-100 text-red-700'><GoDotFill/>Inactive</p>}</td>
               <td className="">
-                <button onClick={()=>UpdateSecurity(item)} className='table-action px-3 py-1 bg-blue-600 text-white rounded mx-1'>Update</button>
-                <button onClick={(e)=>DltSecurity(item?.id)} className='table-action px-3 py-1 bg-red-600 text-white rounded mx-1'>Delete</button>
+                <button onClick={()=>UpdateSecurity(item)} className='table-action px-3 py-1 bg-blue-600 text-white rounded mx-1 my-1'>Update</button>
+                <button onClick={(e)=>DltSecurity(item?.id)} className='table-action px-3 py-1 bg-red-600 text-white rounded mx-1 my-1'>Delete</button>
               </td>
             </tr>
             
