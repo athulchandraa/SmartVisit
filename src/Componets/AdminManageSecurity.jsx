@@ -59,11 +59,7 @@ function AdminManageSecurity() {
     password:"",
     confirmpassword:"",
     status:"",
-    accessed:[{
-      name:"",
-      checkin:"",
-      checkout:""
-    }]
+    accessed:[]
   })
   const[allsecurity,setAllsecurity]=React.useState([])
 
